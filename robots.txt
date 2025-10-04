@@ -1,0 +1,5 @@
+# Allow all user agents full access for indexing
+User-agent: *
+Allow: /
+
+Sitemap: https://galtvx.com/sitemap.xml
