@@ -9,6 +9,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- performance: preload hero image to reduce LCP -->
   <link rel="preload" as="image" href="../assets/foto-gabino-club-cdo.png" />
+  <!-- site config (email, phone, linkedin) loaded with defer to avoid blocking -->
+  <script src="../config.js" defer></script>
   <style>
     .animate-float {
       animation: float 8s ease-in-out infinite;
@@ -32,6 +34,9 @@
     }
     /* performance: delay rendering of below-the-fold sections */
     .cv-auto { content-visibility: auto; contain-intrinsic-size: 800px; }
+    /* entry animation for smoother navigation */
+    .page-fade-in { animation: page-in 500ms cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes page-in { from { opacity: 0; transform: translateY(8px) scale(0.995);} to { opacity: 1; transform: none; } }
     /* accessibility/perf: honor reduced-motion preference */
     @media (prefers-reduced-motion: reduce) {
       * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
@@ -95,7 +100,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100">
+<body class="bg-slate-950 text-slate-100 page-fade-in">
   <div class="min-h-screen relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"></div>
     <div class="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl animate-slow-spin"></div>
@@ -111,16 +116,16 @@
             <p class="text-sm uppercase tracking-[0.35em] text-slate-300">Gabino Antuña Ortiz</p>
           </div>
         </div>
-        <nav class="flex items-center gap-3 text-sm text-slate-300">
-          <a href="#offering" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center min-w-[88px]" data-i18n="nav.offering">Offering</a>
-          <a href="#method" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center min-w-[88px]" data-i18n="nav.method">How I Work</a>
-          <a href="#cases" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center min-w-[88px]" data-i18n="nav.examples">Examples</a>
-          <a href="#contact" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center min-w-[88px]" data-i18n="nav.contact">Contact</a>
+        <nav class="flex flex-wrap items-center justify-center gap-3 text-sm text-slate-300">
+          <a href="#offering" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center md:min-w-[88px]" data-i18n="nav.offering">Offering</a>
+          <a href="#method" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center md:min-w-[88px]" data-i18n="nav.method">How I Work</a>
+          <a href="#cases" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center md:min-w-[88px]" data-i18n="nav.examples">Examples</a>
+          <a href="#contact" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center md:min-w-[88px]" data-i18n="nav.contact">Contact</a>
         </nav>
-        <div class="flex items-center gap-3">
-          <a href="../cv/index.html" class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-cyan-400 hover:text-white transition text-center min-w-[120px]" data-i18n="nav.viewCv">View CV</a>
-          <a href="../offering/index.html" class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-emerald-400 hover:text-white transition text-center min-w-[140px]" data-i18n="nav.simpleOffering">Simple offering</a>
-          <a href="mailto:gabinoantort95@gmail.com" class="flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition text-center min-w-[120px]" data-i18n="nav.contactCta">Let's Talk</a>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="../cv/index.html" class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-cyan-400 hover:text-white transition text-center w-full sm:w-auto md:min-w-[120px]" data-i18n="nav.viewCv">View CV</a>
+          <a href="../offering/index.html" class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-emerald-400 hover:text-white transition text-center w-full sm:w-auto md:min-w-[140px]" data-i18n="nav.simpleOffering">Simple offering</a>
+          <a href="mailto:gabinoantort95@gmail.com" class="flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition text-center w-full sm:w-auto md:min-w-[120px]" data-i18n="nav.contactCta">Let's Talk</a>
         </div>
       </div>
     </header>
@@ -187,23 +192,30 @@
                 <p class="text-sm text-slate-300" data-i18n="profile.subheading">Data &amp; AI Lead · Data Engineering · Data Architecture</p>
               </div>
               <div class="space-y-3 text-sm text-slate-200">
-                <div class="flex items-center gap-3">
-                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center">
+                <a id="emailLink" href="mailto:gabinoantort95@gmail.com" class="group flex items-center gap-3 rounded-2xl px-2 py-1 hover:bg-slate-800/60 transition focus:outline-none focus:ring-2 focus:ring-cyan-400 w-full sm:w-auto">
+                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center transition group-hover:bg-slate-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><polyline points="22,6 12,13 2,6"/></svg>
                   </span>
-                  <a href="mailto:gabinoantort95@gmail.com" class="hover:text-white transition">gabinoantort95@gmail.com</a>
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center">
+                  <span id="emailText" class="transition group-hover:text-white">gabinoantort95@gmail.com</span>
+                </a>
+                <a id="phoneLink" href="tel:+34664657037" class="group flex items-center gap-3 rounded-2xl px-2 py-1 hover:bg-slate-800/60 transition focus:outline-none focus:ring-2 focus:ring-cyan-400 w-full sm:w-auto">
+                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center transition group-hover:bg-slate-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.05 2h3a2 2 0 0 1 2 1.72c.12.81.37 1.6.72 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.18a2 2 0 0 1 2.11-.45c.74.35 1.53.6 2.34.72a2 2 0 0 1 1.72 2z"/></svg>
                   </span>
-                  <span class="select-all">+34 664 657 037</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center">
+                  <span id="phoneText" class="select-all transition group-hover:text-white">+34 664 657 037</span>
+                </a>
+                <a id="linkedinAnchor" href="https://www.linkedin.com/in/gabino-antuna-ortiz/" target="_blank" rel="noopener" class="group flex items-center gap-3 rounded-2xl px-2 py-1 hover:bg-slate-800/60 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-cyan-400 w-full sm:w-auto">
+                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center transition group-hover:bg-slate-700">
+                    <!-- LinkedIn icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5Zm-11 20H5V9h3v11ZM6.5 7.73A1.73 1.73 0 1 1 6.5 4.27a1.73 1.73 0 0 1 0 3.46ZM20 20h-3v-5.6c0-1.33-.48-2.24-1.69-2.24-.92 0-1.47.62-1.71 1.22-.09.22-.11.52-.11.83V20h-3s.04-9 0-11h3v1.56c.4-.62 1.12-1.5 2.71-1.5 1.98 0 3.5 1.29 3.5 4.04V20Z" /></svg>
+                  </span>
+                  <span class="transition group-hover:text-white">LinkedIn</span>
+                </a>
+                <div class="group flex items-center gap-3 rounded-2xl px-2 py-1 hover:bg-slate-800/60 transition">
+                  <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center transition group-hover:bg-slate-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg>
                   </span>
-                  <span data-i18n="profile.location">Madrid, Spain</span>
+                  <span class="transition group-hover:text-white" data-i18n="profile.location">Madrid, Spain</span>
                 </div>
               </div>
             </div>
@@ -370,7 +382,7 @@
           <h2 class="text-3xl md:text-4xl font-bold text-white" data-i18n="contact.title">Let's build the next useful data product</h2>
           <p class="text-slate-300 max-w-3xl mx-auto" data-i18n="contact.description">Send me a short note about the challenge you are facing. Within 48 hours you'll get a concrete proposal with steps, people involved and timelines.</p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="mailto:gabinoantort95@gmail.com" class="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 text-slate-950 font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition" data-i18n="contact.primaryCta">Email me</a>
+          <a id="emailCta" href="mailto:gabinoantort95@gmail.com" class="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 text-slate-950 font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition" data-i18n="contact.primaryCta">Email me</a>
             <a href="https://cal.com" class="px-6 py-3 rounded-full border border-cyan-400/60 text-cyan-100 hover:bg-cyan-500/10 transition" target="_blank" rel="noopener" data-i18n="contact.secondaryCta">Book 30'</a>
           </div>
         </div>
@@ -381,7 +393,7 @@
       <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-slate-400">
         <span data-i18n="footer.copy">© Gabino Antuña Ortiz · Data · AI · Cloud</span>
         <div class="flex flex-wrap gap-4">
-          <a href="mailto:gabinoantort95@gmail.com" class="hover:text-white transition">gabinoantort95@gmail.com</a>
+          <a id="emailFooter" href="mailto:gabinoantort95@gmail.com" class="hover:text-white transition">gabinoantort95@gmail.com</a>
           <span class="flex items-center gap-1">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.05 2h3a2 2 0 0 1 2 1.72c.12.81.37 1.6.72 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.18a2 2 0 0 1 2.11-.45c.74.35 1.53.6 2.34.72a2 2 0 0 1 1.72 2z"/></svg>
             <span class="select-all">+34 664 657 037</span>
@@ -574,6 +586,21 @@
     };
 
     const langToggle = document.getElementById('langToggle');
+    // hydrate contact details from config.js (single source of truth)
+    const cfg = window.APP_CONFIG || {};
+    const setIf = (sel, fn) => { const el = document.querySelector(sel); if (el) fn(el); };
+    if (cfg.email) {
+      setIf('#emailLink',    el => { el.href = `mailto:${cfg.email}`; });
+      setIf('#emailText',    el => { el.textContent = cfg.email; });
+      setIf('#emailCta',     el => { el.href = `mailto:${cfg.email}`; });
+      setIf('#emailFooter',  el => { el.href = `mailto:${cfg.email}`; el.textContent = cfg.email; });
+    }
+    if (cfg.phone) {
+      const tel = (cfg.phone || '').replace(/\s+/g,'');
+      setIf('#phoneLink', el => { el.href = `tel:${tel}`; });
+      setIf('#phoneText', el => { el.textContent = cfg.phone; });
+    }
+    if (cfg.linkedin) { setIf('#linkedinAnchor', el => { el.href = cfg.linkedin; }); }
     const body = document.body;
     const html = document.documentElement;
 
