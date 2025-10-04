@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabino Antuña Ortiz | B2B Offering</title>
+  <!-- performance: keep Tailwind in head to avoid FOUC, add preconnect -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- performance: preload profile image to improve LCP -->
+  <link rel="preload" as="image" href="../assets/foto-gabino-club-cdo.png" />
 </head>
 <body class="bg-gray-900 min-h-screen flex items-center justify-center p-6">
   <main class="w-full max-w-5xl bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
@@ -26,6 +30,8 @@
           src="../assets/foto-gabino-club-cdo.png"
           alt="Gabino Antuña Ortiz"
           class="w-44 h-44 rounded-full border-4 border-red-500 object-cover"
+          fetchpriority="high"
+          decoding="async"
         />
       </div>
     </header>

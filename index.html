@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What is GaltVX?</title>
+  <!-- preconnect Tailwind CDN; keep script in head to avoid FOUC -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- prefetch next page to shorten navigation latency -->
+  <link rel="prefetch" href="whatido/index.html" as="document" />
   <style>
     .animate-gradient {
       background-size: 200% 200%;

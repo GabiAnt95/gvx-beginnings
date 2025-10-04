@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV | Gabino Antuña Ortiz</title>
+  <!-- performance: preconnect to Tailwind CDN to reduce handshake time -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- performance: preload profile image for faster hero render -->
+  <link rel="preload" as="image" href="../assets/foto-gabino-club-cdo.png" />
 </head>
 <body class="bg-slate-900 text-white min-h-screen">
   <main class="max-w-6xl mx-auto p-6 md:p-10">
@@ -29,6 +33,8 @@
             src="../assets/foto-gabino-club-cdo.png"
             alt="Gabino Antuña Ortiz presentando en Club CDO"
             class="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[#34B3AF] object-cover"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
       </div>
