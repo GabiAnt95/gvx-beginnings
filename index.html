@@ -1,117 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gabino Antuña Ortiz | B2B Offering</title>
+  <title>What is GaltVX?</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-shift 12s ease infinite;
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .fade-out {
+      animation: fade-out 600ms ease forwards;
+    }
+    @keyframes fade-out {
+      0% { opacity: 1; transform: scale(1); }
+      40% { opacity: 0.8; transform: scale(1.01); }
+      100% { opacity: 0; transform: scale(1.04); }
+    }
+  </style>
 </head>
-<body class="bg-gray-900 min-h-screen flex items-center justify-center p-6">
-  <main class="w-full max-w-5xl bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-    <header class="flex flex-col md:flex-row items-center justify-between p-8 gap-6">
-      <div class="flex-1 text-white space-y-4">
-        <h1 class="text-4xl font-bold">Gabino Antuña Ortiz | <span class="font-normal">B2B Offering</span></h1>
-        <p class="text-red-400 font-semibold text-2xl">
-          Data, AI &amp; Cloud | Hands-on experience | Problem Solving | Execution
-        </p>
-        <p class="text-gray-300 leading-relaxed max-w-2xl text-lg">
-          I’ve spent years <span class="font-semibold">building data platforms</span> and <span class="font-semibold">leading projects</span> end to end. I like
-          <span class="font-semibold"> solving problems</span> in a simple way, avoiding noise, and <span class="font-semibold">focusing on what really matters</span>.
-          I’ve led teams, managed budgets, and I still enjoy keeping my hands on the technical side. For me, the point is always:
-          <span class="font-semibold"> make it work and make it useful.</span>
-        </p>
-      </div>
-      <div class="flex-shrink-0">
-        <img
-          src="assets/foto-gabino-club-cdo.png"
-          alt="Gabino Antuña Ortiz"
-          class="w-44 h-44 rounded-full border-4 border-red-500 object-cover"
-        />
-      </div>
-    </header>
-
-    <section class="bg-gray-700 flex flex-col md:flex-row items-center justify-center gap-6 p-4 text-gray-200 text-sm">
-      <div class="flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <a href="mailto:gabinoantort95@gmail.com" class="hover:underline">gabinoantort95@gmail.com</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.05 2h3a2 2 0 0 1 2 1.72c.12.81.37 1.6.72 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.18a2 2 0 0 1 2.11-.45c.74.35 1.53.6 2.34.72a2 2 0 0 1 1.72 2z"/></svg>
-        <span>+34 664 657 037</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg>
-        <span>Madrid, España</span>
-      </div>
-    </section>
-
-    <section class="bg-white text-gray-900 p-10 space-y-8">
-      <h2 class="text-2xl font-bold text-red-600 border-b-2 border-red-600 inline-block pb-1">WHAT I OFFER</h2>
-
-      <article>
-        <h3 class="text-xl font-semibold mb-2">Data Platforms | End-to-End Design, Execution &amp; Governance</h3>
-        <ul class="list-disc list-inside space-y-1 text-gray-700">
-          <li>Design data platforms in cloud</li>
-          <li>Data lake &amp; warehouses organization</li>
-          <li>Building ETL processes for different data sources</li>
-          <li>Corporative reporting &amp; self-consumption data for business profiles</li>
-          <li>Data governance: powered by GenAI</li>
-        </ul>
-      </article>
-
-      <article>
-        <h3 class="text-xl font-semibold mb-2">Use Cases | Understanding, solution, execution. Feedback + Impact</h3>
-        <ul class="list-disc list-inside space-y-1 text-gray-700">
-          <li>Data extraction from different sources (APIs, research, web scraping)</li>
-          <li>Data cleaning, transformation, master data building</li>
-          <li>Automation &amp; processes improvement</li>
-          <li>Reporting &amp; Visualization</li>
-        </ul>
-      </article>
-
-      <article>
-        <h3 class="text-xl font-semibold mb-2">Teaching: Formations in Data &amp; AI</h3>
-        <ul class="list-disc list-inside space-y-1 text-gray-700">
-          <li>Data, BigData: Python, SQL and Databases organization</li>
-          <li>GenAI: How to use LLMs (ChatGPT, Gemini, Grok) properly</li>
-          <li>Data organization: How to work properly with spreadsheet data</li>
-          <li>Cloud</li>
-        </ul>
-      </article>
-
-      <article>
-        <h3 class="text-xl font-semibold mb-2">Datasets &amp; Data Products</h3>
-        <ul class="list-disc list-inside space-y-1 text-gray-700">
-          <li>Curated datasets with direct business value</li>
-          <li>Public data cleaned, structured, and delivered</li>
-          <li>Example 1: Energy, resources, electric infrastructure</li>
-          <li>Example 2: Pieces of news, state bulletins &amp; announcements, countries development measures...</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="relative bg-white text-gray-900 p-10 space-y-6 border-t overflow-hidden">
-      <div class="relative space-y-6">
-        <h2 class="text-2xl font-bold text-red-600 border-b-2 border-red-600 inline-block pb-1">HOW I WORK</h2>
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-          <p class="text-lg font-medium text-gray-800">Problem understanding → Solution design → Execution → Impact → Feedback</p>
-        </div>
-        <div>
-          <h4 class="text-red-500 font-semibold mb-2">Steps</h4>
-          <ol class="list-decimal list-inside space-y-1 text-gray-700">
-            <li>Initial meeting to understand the problem</li>
-            <li>Solution proposal</li>
-            <li>Project development</li>
-            <li>Feedback &amp; next steps</li>
-          </ol>
-        </div>
-        <p class="text-sm italic text-gray-700 mt-4">
-          Contacto: <a href="mailto:gabinoantort95@gmail.com" class="underline">GabinoAntOrt95@gmail.com</a> - +34 664 657 037
-        </p>
-      </div>
-      <div class="absolute bottom-0 right-0 w-1/2 h-40 bg-[url('/e3812ab8-2c5b-478f-9a29-e27760f8f02b.png')] bg-no-repeat bg-contain opacity-40 pointer-events-none"></div>
-    </section>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <div class="absolute inset-0 animate-gradient bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.25),_transparent_60%),_radial-gradient(circle_at_bottom,_rgba(16,185,129,0.2),_transparent_55%)]"></div>
+  <main class="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white drop-shadow-xl">What is <span class="bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">Galt V X</span>?</h1>
+    <a href="whatido/index.html" class="mt-12 inline-flex items-center gap-3 rounded-full border border-cyan-400/60 bg-cyan-500/15 px-8 py-3 text-sm font-semibold text-cyan-100 shadow-lg shadow-cyan-500/30 hover:bg-cyan-500/25 transition" id="enterLink">
+      Enter the "What I do" space
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
   </main>
+  <script>
+    const link = document.getElementById('enterLink');
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = link.getAttribute('href');
+      }, 600);
+    });
+  </script>
 </body>
 </html>
