@@ -21,8 +21,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- performance: preload profile image for faster hero render -->
   <link rel="preload" as="image" href="../assets/foto-gabino-club-cdo.png" />
+  <style>
+    .page-fade-out { animation: fade-out 450ms cubic-bezier(0.22,1,0.36,1) forwards; }
+    @keyframes fade-out {
+      0% { opacity: 1; transform: scale(1); filter: blur(0); }
+      60% { opacity: 0.6; transform: scale(1.01); filter: blur(2px); }
+      100% { opacity: 0; transform: scale(1.04); filter: blur(6px); }
+    }
+    .page-fade-in { animation: page-in 450ms cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes page-in {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); filter: blur(6px); }
+      to { opacity: 1; transform: none; filter: blur(0); }
+    }
+  </style>
 </head>
-<body class="bg-slate-900 text-white min-h-screen">
+<body class="bg-slate-900 text-white min-h-screen page-fade-in">
   <main class="max-w-6xl mx-auto p-6 md:p-10">
     <section class="bg-[#1F2D3C] rounded-3xl overflow-hidden shadow-2xl">
       <div class="flex flex-col md:flex-row items-center md:items-start gap-10 p-10">
@@ -42,7 +55,7 @@
         </div>
         <div class="flex-shrink-0">
           <img
-            src="../assets/foto-gabino-club-cdo.png"
+            src="../assets/fotos/foto-gabino-club-cdo.png"
             alt="Gabino Antuña Ortiz presentando en Club CDO"
             class="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-[#34B3AF] object-cover"
             fetchpriority="high"
@@ -69,6 +82,10 @@
           </span>
           <span>Madrid, España</span>
         </div>
+        <a href="../assets/pdfs/GabiAnt2025.pdf" class="inline-flex items-center gap-2 rounded-full border border-[#34B3AF]/60 px-5 py-2 text-sm font-semibold text-[#34B3AF] hover:bg-[#34B3AF]/10 transition" download>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV (PDF)
+        </a>
       </div>
     </section>
 
@@ -208,5 +225,6 @@
       </div>
     </section>
   </main>
+  <script src="../transition.js" defer></script>
 </body>
 </html>

@@ -46,6 +46,17 @@
     }
     /* performance: delay rendering of below-the-fold sections */
     .cv-auto { content-visibility: auto; contain-intrinsic-size: 800px; }
+    .page-fade-out { animation: fade-out 450ms cubic-bezier(0.22,1,0.36,1) forwards; }
+    @keyframes fade-out {
+      0% { opacity: 1; transform: scale(1); filter: blur(0); }
+      60% { opacity: 0.6; transform: scale(1.01); filter: blur(2px); }
+      100% { opacity: 0; transform: scale(1.04); filter: blur(6px); }
+    }
+    .page-fade-in { animation: page-in 450ms cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes page-in {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); filter: blur(6px); }
+      to { opacity: 1; transform: none; filter: blur(0); }
+    }
     /* entry animation for smoother navigation */
     .page-fade-in { animation: page-in 500ms cubic-bezier(0.22,1,0.36,1) both; }
     @keyframes page-in { from { opacity: 0; transform: translateY(8px) scale(0.995);} to { opacity: 1; transform: none; } }
@@ -135,9 +146,9 @@
           <a href="#contact" class="flex items-center justify-center px-3 py-2 hover:text-white transition text-center md:min-w-[88px]" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href="../cv/index.html" class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-cyan-400 hover:text-white transition text-center w-full sm:w-auto md:min-w-[120px]" data-i18n="nav.viewCv">View CV</a>
-          <a href="../offering/index.html" class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-emerald-400 hover:text-white transition text-center w-full sm:w-auto md:min-w-[140px]" data-i18n="nav.simpleOffering">Simple offering</a>
-          <a href="mailto:gabinoantort95@gmail.com" class="flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition text-center w-full sm:w-auto md:min-w-[120px]" data-i18n="nav.contactCta">Let's Talk</a>
+          <a href="../cv/index.html" data-transition class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-cyan-400 hover:text-white transition text-center w-full sm:w-auto md:min-w-[120px]" data-i18n="nav.viewCv">View CV</a>
+          <a href="../offering/index.html" data-transition class="flex items-center justify-center px-4 py-2 border border-slate-500/60 rounded-full text-sm font-medium hover:border-emerald-400 hover:text-white transition text-center w-full sm:w-auto md:min-w-[140px]" data-i18n="nav.simpleOffering">Simple offering</a>
+          <a href="#contact" data-transition class="flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition text-center w-full sm:w-auto md:min-w-[120px]" data-i18n="nav.contactCta">Let's Talk</a>
         </div>
       </div>
     </header>
@@ -197,7 +208,7 @@
             <div class="space-y-6">
               <div class="relative w-40 h-40 mx-auto">
                 <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 blur-xl opacity-60 animate-float"></div>
-                <img src="../assets/foto-gabino-club-cdo.png" alt="Gabino Antuña Ortiz" class="relative w-full h-full rounded-full border-4 border-cyan-400/70 object-cover shadow-2xl" fetchpriority="high" decoding="async" />
+                <img src="../assets/fotos/foto-gabino-club-cdo.png" alt="Gabino Antuña Ortiz" class="relative w-full h-full rounded-full border-4 border-cyan-400/70 object-cover shadow-2xl" fetchpriority="high" decoding="async" />
               </div>
               <div class="text-center space-y-2">
                 <h3 class="text-xl font-semibold text-white" data-i18n="profile.heading">Hi, I'm Gabino</h3>
@@ -227,7 +238,7 @@
                   <span class="h-10 w-10 rounded-2xl bg-slate-800 flex items-center justify-center transition group-hover:bg-slate-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg>
                   </span>
-                  <span class="transition group-hover:text-white" data-i18n="profile.location">Madrid, Spain</span>
+                  <span id="locationText" class="transition group-hover:text-white" data-i18n="profile.location">Madrid, Spain</span>
                 </div>
               </div>
             </div>
@@ -419,6 +430,7 @@
     </footer>
   </div>
 
+  <script src="../transition.js" defer></script>
   <script>
     const translations = {
       en: {
@@ -613,6 +625,7 @@
       setIf('#phoneText', el => { el.textContent = cfg.phone; });
     }
     if (cfg.linkedin) { setIf('#linkedinAnchor', el => { el.href = cfg.linkedin; }); }
+    if (cfg.location) { setIf('#locationText', el => { el.textContent = cfg.location; }); }
     const body = document.body;
     const html = document.documentElement;
 

@@ -21,8 +21,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- performance: preload profile image to improve LCP -->
   <link rel="preload" as="image" href="../assets/foto-gabino-club-cdo.png" />
+  <style>
+    .page-fade-out { animation: fade-out 450ms cubic-bezier(0.22,1,0.36,1) forwards; }
+    @keyframes fade-out {
+      0% { opacity: 1; transform: scale(1); filter: blur(0); }
+      60% { opacity: 0.6; transform: scale(1.01); filter: blur(2px); }
+      100% { opacity: 0; transform: scale(1.04); filter: blur(6px); }
+    }
+    .page-fade-in { animation: page-in 450ms cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes page-in {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); filter: blur(6px); }
+      to { opacity: 1; transform: none; filter: blur(0); }
+    }
+  </style>
 </head>
-<body class="bg-gray-900 min-h-screen flex items-center justify-center p-6">
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-6 page-fade-in">
   <main class="w-full max-w-5xl bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
     <header class="flex flex-col md:flex-row items-center justify-between p-8 gap-6">
       <div class="flex-1 text-white space-y-4">
@@ -36,10 +49,14 @@
           I’ve led teams, managed budgets, and I still enjoy keeping my hands on the technical side. For me, the point is always:
           <span class="font-semibold"> make it work and make it useful.</span>
         </p>
+        <a href="../assets/pdfs/MyOffering2025.pdf" class="inline-flex items-center gap-2 rounded-full border border-red-400/60 px-5 py-2 text-sm font-semibold text-red-300 hover:bg-red-500/10 transition" download>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download offering (PDF)
+        </a>
       </div>
       <div class="flex-shrink-0">
         <img
-          src="../assets/foto-gabino-club-cdo.png"
+          src="../assets/fotos/foto-gabino-club-cdo.png"
           alt="Gabino Antuña Ortiz"
           class="w-44 h-44 rounded-full border-4 border-red-500 object-cover"
           fetchpriority="high"
@@ -131,5 +148,6 @@
       <div class="absolute bottom-0 right-0 w-1/2 h-40 bg-[url('/e3812ab8-2c5b-478f-9a29-e27760f8f02b.png')] bg-no-repeat bg-contain opacity-40 pointer-events-none"></div>
     </section>
   </main>
+  <script src="../transition.js" defer></script>
 </body>
 </html>
