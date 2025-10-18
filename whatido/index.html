@@ -130,6 +130,45 @@
       color: #0f172a;
     }
   </style>
+  <!-- ✅ Structured Data optimizado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.galtvx.com/#organization",
+        "name": "Galt VX",
+        "url": "https://www.galtvx.com/",
+        "logo": "https://www.galtvx.com/assets/galt_img/Galt_Logo_original.svg",
+        "sameAs": [
+          "https://www.linkedin.com/in/gabinoantuñaortiz",
+          "https://x.com/gabiant95"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.galtvx.com/#person",
+        "name": "Gabino Antuña Ortiz",
+        "url": "https://www.galtvx.com/",
+        "image": "https://www.galtvx.com/assets/galt_img/Galt_Logo_original.svg",
+        "jobTitle": "Data & AI Lead",
+        "worksFor": { "@id": "https://www.galtvx.com/#organization" },
+        "sameAs": [
+          "https://www.linkedin.com/in/gabinoantuñaortiz",
+          "https://x.com/gabiant95"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.galtvx.com/#website",
+        "url": "https://www.galtvx.com/",
+        "name": "Galt VX",
+        "publisher": { "@id": "https://www.galtvx.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-slate-950 text-slate-100 page-fade-in">
   <div class="min-h-screen relative overflow-hidden">
