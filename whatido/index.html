@@ -410,7 +410,7 @@
           <p class="text-slate-300 max-w-3xl mx-auto" data-i18n="contact.description">Send me a short note about the challenge you are facing. Within 48 hours you'll get a concrete proposal with steps, people involved and timelines.</p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
           <a id="emailCta" href="mailto:gabinoantort95@gmail.com" class="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 text-slate-950 font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition" data-i18n="contact.primaryCta">Email me</a>
-            <a href="https://cal.com" class="px-6 py-3 rounded-full border border-cyan-400/60 text-cyan-100 hover:bg-cyan-500/10 transition" target="_blank" rel="noopener" data-i18n="contact.secondaryCta">Book 30'</a>
+            <a id="calCta" href="https://cal.com/gabiant-galtvx" class="px-6 py-3 rounded-full border border-cyan-400/60 text-cyan-100 hover:bg-cyan-500/10 transition" target="_blank" rel="noopener" data-i18n="contact.secondaryCta">Book 30'</a>
           </div>
         </div>
       </section>
@@ -629,6 +629,7 @@
       setIf('#phoneText', el => { el.textContent = cfg.phone; });
     }
     if (cfg.linkedin) { setIf('#linkedinAnchor', el => { el.href = cfg.linkedin; }); }
+    if (cfg.cal) { setIf('#calCta', el => { el.href = cfg.cal; }); }
     if (cfg.location) { setIf('#locationText', el => { el.textContent = cfg.location; }); }
     const body = document.body;
     const html = document.documentElement;
