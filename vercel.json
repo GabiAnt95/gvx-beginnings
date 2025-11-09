@@ -1,18 +1,21 @@
 {
   "version": 2,
-  "public": true,
-  "rewrites": [
-    {
-      "source": "/chat",
-      "destination": "/api/chat"
-    }
-  ],
   "redirects": [
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "galtvx.com" }],
       "destination": "https://www.galtvx.com/:path*",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/interactive.js",
+      "destination": "/public/interactive.js"
+    },
+    {
+      "source": "/chat",
+      "destination": "/api/chat"
     }
   ]
 }
